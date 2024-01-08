@@ -1,0 +1,47 @@
+{% extends "nav.html" %}
+
+{% block content %}
+<style>
+    .custom-card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 30vh;
+    }
+
+    .custom-card {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .card-title {
+        font-size: 36px; 
+        margin-bottom: 10px; 
+    }
+</style>
+
+<div class="mt-4"> 
+    <div class="card">
+        <div class="card-body">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Students Info</a></li>
+                <li class="breadcrumb-item"><a href="#">My Class</a></li>
+                <li class="breadcrumb-item"><a href="#">Assignment</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="custom-card-container">
+    <div class="custom-card">
+        <h5 class="card-title">Welcome</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="{% url 'myclass' %}" class="btn btn-success">Manage</a>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "nav.html" %}
+{% block content %}
+
+{% for data in notice_data %}
+<div class="mt-4 mb-4 ml-4 mr-5">
+    <div class="card">
+        <h5 class="card-header">{{ data.title }}</h5>
+        <div class="card-body">
+            <p class="card-text">{{ data.description|truncatechars:100 }}</p>
+            <a href="{% url 'detail_notice' id=data.id %}" class="btn btn-primary">View More</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
