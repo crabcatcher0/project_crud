@@ -4,3 +4,5 @@ from .models import *
 
 
 admin.site.register(Notice)
+admin.site.register(FrontPage)
+admin.site.register(FrontPageOffice)

@@ -1,0 +1,148 @@
+/* Custom styles for the first navbar with a dark background */
+.navbar-dark {
+    padding: 10px; /* Increase the padding to make the navbar taller */
+}
+
+/* Style the TJMC logo */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow effect */
+}
+
+
+.navbar-form {
+    margin-right: 40px; /* Adjust the margin to move the search bar to the left */
+}
+
+.form-control {
+    border-radius: 0; /* Optional: Remove border-radius for a modern look */
+}
+
+.btn-outline-light {
+    border-radius: 0; /* Optional: Remove border-radius for a modern look */
+}
+
+/* Customize navbar text styles */
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    font-size: 18px; /* Adjust the font size to make text larger */
+    color: #ffffff; /* Set text color to white */
+}
+
+.navbar-toggler {
+    font-size: 24px; /* Adjust the font size of the toggler icon */
+    color: #ffffff; /* Set toggler icon color to white */
+}
+
+
+.recent-box {
+    background-color: #2b4864; /* Set your desired background color */
+    padding: 10px; /* Adjust the padding as needed */
+    display: flex; /* Use flexbox for layout control */
+    align-items: center; /* Center items vertically */
+    margin-right: 10px; /* Add margin to separate from other elements */
+}
+
+/* Customize the Recent: heading style */
+.recent-box h4 {
+    margin-right: 10px; /* Adjust the margin as needed */
+    font-size: 18px; /* Adjust the font size as needed */
+    color: white; /* Set heading color to black */
+}
+
+/* Style the moving box container */
+.moving-box {
+    background-color: #f0f0f0; /* Set your desired background color */
+    padding: 3px; /* Adjust the padding as needed */
+    display: flex; /* Use flexbox for layout control */
+    align-items: center; /* Center items vertically */
+    overflow: hidden; /* Hide any overflowing content */
+    margin-right: 10px; /* Add margin to separate from navbar items */
+}
+
+/* Customize the Recent: heading style */
+.moving-box h4 {
+    margin-right: 10px; /* Adjust the margin as needed */
+    font-size: 18px; /* Adjust the font size as needed */
+    color: #000000; /* Set heading color to black */
+}
+
+/* Custom styles for the contact box */
+.contact-box {
+    display: flex;
+    align-items: center;
+}
+
+/* Style the phone number */
+.phone-number {
+    margin-right: 10px; /* Adjust the margin as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    color: #000000; /* Set text color to black */
+}
+
+/* Style the social icon */
+.social-icon {
+    font-size: 16px; /* Adjust the font size as needed */
+    color: #000000; /* Set text color to black */
+    text-decoration: none; /* Remove underline from the link */
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+/* Optionally, you can add hover styles for the social icon */
+.social-icon:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+/* Moving Notices Animation */
+@keyframes moveText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* Style the moving text */
+#movingNotices {
+    white-space: nowrap;
+    animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
+    color: #000000;
+}
+
+/* Hide the search bar on smaller screens */
+@media (max-width: 767px) {
+    .navbar-form {
+        display: none;
+    }
+
+    
+    .btn-outline-light {
+        margin-left: 10px; /* Optional: Add margin to the search icon for better spacing */
+    }
+}
+/* Move nav-items to the left on larger screens (laptops) */
+@media (min-width: 768px) {
+    .navbar-nav {
+        margin-left: auto; /* Move the nav-items to the left */
+    }
+        
+    
+    .moving-box {
+        margin-right: auto; /* Align the moving box to the left on larger screens */
+        width: 40%;
+    }
+    
+   
+}

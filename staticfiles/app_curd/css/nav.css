@@ -1,0 +1,22 @@
+  /* Custom styles for the first navbar with a dark background */
+  .navbar-dark {
+    background-color: #343a40;
+    padding: 20px; /* Adjust the padding to make the navbar taller */
+}
+
+/* Customize navbar text styles */
+.navbar-brand,
+.navbar-nav .nav-link {
+    font-size: 18px; /* Adjust the font size to make text larger */
+}
+
+.navbar-toggler {
+    font-size: 24px; /* Adjust the font size of the toggler icon */
+}
+
+/* Move nav-items to the left on larger screens (laptops) */
+@media (min-width: 768px) {
+    .navbar-nav {
+        margin-left: auto; /* Move the nav-items to the left */
+    }
+}
