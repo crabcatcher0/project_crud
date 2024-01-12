@@ -20,8 +20,7 @@
       <h2>Leaders and Administrators</h2>
       <p> MEET OUR LEADERSHIP AND ADMINISTRATORS </p>
     </div>
- 
-    <div class="leaders-container" id="leaderContainer">
+ <div class="leaders-container" id="leaderContainer">
       {% for person in official_face %}
         <div class="leader-card">
           <img src="{{ person.image.url }}" alt="{{ person.name }}">
@@ -33,13 +32,32 @@
       {% endfor %}
     </div>
   </div>
-  
-  
-    <div class="navigation-icons">
-      <i class="fas fa-arrow-left" onclick="prevSlide()"></i>
-      <i class="fas fa-arrow-right" onclick="nextSlide()"></i>
+     <div class="navigation-icons">
+      <i class="fa-solid fa-circle-chevron-left" onclick="prevSlide()"></i>
+      <i class="fa-solid fa-circle-chevron-right" onclick="nextSlide()"></i>
     </div>
-  
+</div>
+
+<div class="container mt-4 mb-4">
+  <h1>Latest Events</h1>
+  <div class="row" id="notice-container">
+    {% for data in notice_data %}
+    <div class="col-md-4 notice-card mb-4">
+      <h5 class="card-header">{{ data.title }}</h5>
+      <div class="card-body">
+        <p class="card-text">{{ data.description|truncatechars:100 }}</p>
+        <a href="{% url 'detail_notice' id=data.id %}" class="btn btn-primary">View More</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="text-center">
+    <a href="{% url 'notice' %}" class="btn btn-primary">View More</a>
+  </div>  
+</div>
+
+
+   
    
   
   <style>
@@ -138,22 +156,34 @@
       color: #666;
     }
 
-  .navigation-icons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: -168px;
-    
+    .navigation-icons {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
   }
-
+   
   .navigation-icons i {
     cursor: pointer;
-    padding: 0 10px;
-    margin-top: 40px
-  }
+    margin: 0 10px; /* Adjust the margin as needed */
+    border-radius: 25%; /* Make it circular */
+    border: 2px solid #2b4864; /* Add a border to create the circular outline */
+    padding: 10px; /* Adjust the padding for spacing */
+    color: #2b4864; /* Initial color of icons */
+    opacity: 0.9; /* Initial opacity */
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
 
-    
+.navigation-icons i:hover {
+    background-color: #2b4864; /* Dark background color on hover */
+    color: #fff; /* Change the color to white on hover */
+    opacity: 1; /* Change opacity on hover */
+}
 
-    
+
+
+
+
+
 
     /* Media query for small screens (e.g., screens with a maximum width of 768px) */
     @media (max-width: 768px) {
@@ -182,15 +212,16 @@
     
       .navigation-icons {
         display: flex;
-        justify-content: space-between;
-        margin-top: -225px; /* Remove negative margin */
-      }
-    
-      .navigation-icons i {
-        cursor: pointer;
-        padding: 0 10px;
-        margin-top: 10px; /* Adjust margin for spacing */
-      }
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    .navigation-icons i {
+      padding: 8px; /* Adjust padding for smaller screens */
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+              
+
     }
 
       
@@ -236,6 +267,12 @@
     window.addEventListener('resize', function () {
       slidesToShow = window.innerWidth <= 768 ? 1 : 3; // Update slidesToShow based on window width
       showSlides();
+    });
+
+    $(document).ready(function () {
+      // Hide all notice cards except the first three
+      $('#notice-container .notice-card:gt(2)').hide();
+  
     });
   </script>
   

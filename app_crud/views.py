@@ -5,18 +5,17 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    front_page_data = FrontPage.objects.first()
     official_face = FrontPageOffice.objects.all()
-
+    notice_data = Notice.objects.all()
 
     context = {
-        'front_page_data': front_page_data,
-        'official_face':official_face
-
+        'official_face':official_face,
+        'notice_data':notice_data,
     }
-
    
     return render(request, 'home.html', context)
+
+
 
 
 def myclass(request):
@@ -49,4 +48,8 @@ def detail_notice(request, id):
     }
 
     return render(request, 'detail_notice.html', context)
+
+
+def gallery(request):
+    return render(request, 'gallery.html')
 

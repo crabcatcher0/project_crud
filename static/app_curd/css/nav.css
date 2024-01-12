@@ -48,7 +48,7 @@
 
 .recent-box {
     background-color: #2b4864; /* Set your desired background color */
-    padding: 10px; /* Adjust the padding as needed */
+    padding: 7px; /* Adjust the padding as needed */
     display: flex; /* Use flexbox for layout control */
     align-items: center; /* Center items vertically */
     margin-right: 10px; /* Add margin to separate from other elements */
@@ -78,31 +78,28 @@
     color: #000000; /* Set heading color to black */
 }
 
-/* Custom styles for the contact box */
-.contact-box {
-    display: flex;
-    align-items: center;
+.search-form {
+    margin-top: 10px; /* Adjust the distance from the top */
 }
 
-/* Style the phone number */
-.phone-number {
-    margin-right: 10px; /* Adjust the margin as needed */
-    font-size: 16px; /* Adjust the font size as needed */
-    color: #000000; /* Set text color to black */
+.search-input {
+    margin-right: -9px; /* Adjust the distance between the input and the button */
+    width: 300px; /* Adjust the width of the input field */
 }
 
-/* Style the social icon */
-.social-icon {
-    font-size: 16px; /* Adjust the font size as needed */
-    color: #000000; /* Set text color to black */
-    text-decoration: none; /* Remove underline from the link */
-    margin-right: 10px; /* Adjust the margin as needed */
+.custom-button {
+    color: #ffffff; /* Set the color of the button text */
+    background-color: #2b4864; /* Set the background color of the button */
+    border-color: #2b4864; /* Set the border color of the button */
 }
 
-/* Optionally, you can add hover styles for the social icon */
-.social-icon:hover {
-    text-decoration: underline; /* Underline on hover */
+.custom-button:hover {
+    color: #2b4864; /* Set the color of the button text on hover */
+    background-color: #ffffff; /* Set the background color of the button on hover */
+    border-color: #2b4864; /* Set the border color of the button on hover */
 }
+
+
 /* Moving Notices Animation */
 @keyframes moveText {
     0% {
@@ -121,18 +118,27 @@
     color: #000000;
 }
 
-/* Hide the search bar on smaller screens */
 @media (max-width: 767px) {
-    .navbar-form {
-        display: none;
+
+    #searchInput {
+        font-size: 12px; /* Adjust the font size for smaller screens */
+        padding: 5px; /* Adjust padding for smaller screens */
     }
 
-    
-    .btn-outline-light {
-        margin-left: 10px; /* Optional: Add margin to the search icon for better spacing */
+    #searchButton {
+        font-size: 12px; /* Adjust the font size for smaller screens */
+        padding: 5px 5px; /* Adjust padding for smaller screens */
+        height: fit-content;
     }
+  
+
+    #searchButton i {
+        font-size: 0.75rem; /* Adjust the font size for the icon */
+    }
+    
+   
 }
-/* Move nav-items to the left on larger screens (laptops) */
+/*  larger screens (laptops) */
 @media (min-width: 768px) {
     .navbar-nav {
         margin-left: auto; /* Move the nav-items to the left */
@@ -143,6 +149,11 @@
         margin-right: auto; /* Align the moving box to the left on larger screens */
         width: 40%;
     }
-    
-   
+      
+}
+
+@media (max-width: 600px) {
+    .search-form {
+        display: none;
+    }
 }

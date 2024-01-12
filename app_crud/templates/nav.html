@@ -22,11 +22,6 @@
                 <img src="{% static 'tjmclogo.png' %}" alt="Logo" height="30" class="d-inline-block align-text-top">
                 TJMC
             </a>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,11 +31,10 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Gallery</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'gallery' %}">Gallery</a>
                     </li>
                     
                    
-                    <!-- Repeat the above dropdown structure for other items as needed -->
                     <li class="nav-item dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Staff
@@ -67,7 +61,6 @@
             </div>
         </div>
     </nav>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <div class="recent-box"> 
@@ -76,29 +69,49 @@
             <div class="moving-box">
                 <span class="navbar-text" id="movingNotices">Your Moving Text Here</span>
             </div>
-            <div class="contact-box">
-                <span class="phone-number">
-                    <i class="fas fa-phone"></i> {{ front_page_data.phone_number1 }}
-                </span>
-                <span class="phone-number">
-                    <i class="fas fa-phone"></i> {{ front_page_data.phone_number2 }}
-                </span>
-                
-            
-                <a href="{{ front_page_data.facebook }}" class="social-icon">
-                    <i class="fab fa-facebook"></i>
-                </a>
-            </div>
-            
+            <form class="form-inline my-2 my-lg-0 ml-auto search-form">
+                <div class="row">
+                    <div class="col search-input">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-outline-success my-2 my-sm-0 custom-button" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <!-- Move the Facebook icon inside the same row as the search button -->
+                        <a href="#" class="btn my-2 my-sm-0 custom-button">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn my-2 my-sm-0 custom-button">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="#" class="btn my-2 my-sm-0 custom-button phone">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </form>
         </div>
     </nav>
+    <div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="phoneModalLabel">Contact Numbers</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for phone_number in contact_numbers %}
+                            <li>{{ phone_number }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    
-
-    {% block content %}
-
-    {% endblock %}
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
         function showDropdown(element) {
@@ -126,7 +139,22 @@
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var phoneButton = document.querySelector('.phone');
+    
+            phoneButton.addEventListener('click', function () {
+                var phoneModal = new bootstrap.Modal(document.getElementById('phoneModal'));
+                phoneModal.show();
+            });
+        });
     </script>
+{% block content %}
+
+
+{% endblock %}
+
+
     
 </body>
 </html>
