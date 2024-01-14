@@ -51,5 +51,12 @@ def detail_notice(request, id):
 
 
 def gallery(request):
-    return render(request, 'gallery.html')
+    image_data = Gallery.objects.all()
+    context = {
+        'image_data': image_data
+    }
+    return render(request, 'gallery.html', context)
+
+def about_us(request):
+    return render(request, 'about_us.html')
 

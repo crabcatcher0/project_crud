@@ -4,11 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
     <script src="https://kit.fontawesome.com/e558d90e8d.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'app_curd/css/nav.css' %}">
 
@@ -16,7 +13,7 @@
     <title>TJMC</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg  navbar-dark"  style="background-color: #2b4864;">
+    <nav class="navbar navbar-expand-lg navbar-dark"  style="background-color: #2b4864;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="{% static 'tjmclogo.png' %}" alt="Logo" height="30" class="d-inline-block align-text-top">
@@ -29,6 +26,9 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'about_us' %}">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'gallery' %}">Gallery</a>
@@ -78,7 +78,6 @@
                         <button class="btn btn-outline-success my-2 my-sm-0 custom-button" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
-                        <!-- Move the Facebook icon inside the same row as the search button -->
                         <a href="#" class="btn my-2 my-sm-0 custom-button">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
@@ -124,14 +123,12 @@
             element.querySelector('.dropdown-menu').classList.remove('show');
         }
 
-        // Fetch notice data using jQuery
         $(document).ready(function() {
             $.ajax({
                 url: '{% url "get_notice_data" %}',
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
-                    // Update the moving notices span with the fetched data
                     $('#movingNotices').text(data.map(item => item.title).join(' || '));
                 },
                 error: function(error) {
@@ -153,7 +150,42 @@
 
 
 {% endblock %}
-
+<footer class="footer mt-3" style="background-color: #2b4864;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-3" style="color: #fff;">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mt-3" style="color: #fff;">
+                <h5>Additional Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mt-3" style="color: #fff;">
+                <h5>Contact Us</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-map-marker-alt"></i> <a href="#">Location</a></li>
+                    <li><i class="fas fa-phone"></i> <span>+977 12345678</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12 text-center" style="color: #fff;">
+                <p>&copy; 1998 TJMC. |  All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
     
 </body>

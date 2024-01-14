@@ -99,7 +99,6 @@
     border-color: #2b4864; /* Set the border color of the button on hover */
 }
 
-
 /* Moving Notices Animation */
 @keyframes moveText {
     0% {
@@ -116,6 +115,17 @@
     white-space: nowrap;
     animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
     color: #000000;
+}
+
+
+
+.list-unstyled li a {
+    text-decoration: none;
+    color: #e3dede;
+}
+
+.list-unstyled li a:hover{
+    color: #ffffff;
 }
 
 @media (max-width: 767px) {

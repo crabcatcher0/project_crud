@@ -13,47 +13,71 @@
       </div>
     </div>
   </div>
-
-  
-  <div class="content-container">
-    <div class="section-header">
-      <h2>Leaders and Administrators</h2>
-      <p> MEET OUR LEADERSHIP AND ADMINISTRATORS </p>
-    </div>
- <div class="leaders-container" id="leaderContainer">
-      {% for person in official_face %}
-        <div class="leader-card">
-          <img src="{{ person.image.url }}" alt="{{ person.name }}">
-          <div class="leader-info">
-            <h5>{{ person.name }}</h5>
-            <p>{{ person.position }}</p>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-     <div class="navigation-icons">
-      <i class="fa-solid fa-circle-chevron-left" onclick="prevSlide()"></i>
-      <i class="fa-solid fa-circle-chevron-right" onclick="nextSlide()"></i>
-    </div>
 </div>
 
+<div class="about-container">
+  <div class="row">
+    <div class="col-sm">
+      <h2 class="mb-4" style="font-weight: bold;">About Us</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod euismod massa, id volutpat massa tempus ut.</p>
+    </div>
+    <div class="col-sm">
+      <img src="https://via.placeholder.com/200" alt="About Us Image">
+    </div>
+  </div>
+  <a href="{% url 'about_us' %}" class="explore-btn mt-4" style="font-weight: bold;">
+    <i class="fa-brands fa-wpexplorer fa-2x"></i>
+    Explore
+  </a>
+  
+</div>
+
+  
+
 <div class="container mt-4 mb-4">
-  <h1>Latest Events</h1>
+  <h1 style="font-weight: bold;">Latest Events</h1>
+  <p class="text-muted" style="text-transform: uppercase; font-weight: bold;">This is our latest events. Stay tuned for updates and happenings.</p>
   <div class="row" id="notice-container">
     {% for data in notice_data %}
-    <div class="col-md-4 notice-card mb-4">
-      <h5 class="card-header">{{ data.title }}</h5>
+    <div class="col-md-4 notice-card mb-2" style="background-color: #e9edf0;">
+      <h5 class="card-header mt-2">{{ data.title }}</h5>
       <div class="card-body">
-        <p class="card-text">{{ data.description|truncatechars:100 }}</p>
-        <a href="{% url 'detail_notice' id=data.id %}" class="btn btn-primary">View More</a>
+        <p class="card-text">{{ data.description|truncatechars:40 }}</p>
+        <a href="{% url 'detail_notice' id=data.id %}" class="btn btn-primar" style="background-color: #2b4864; color: #fff;">View More</a>
       </div>
     </div>
     {% endfor %}
   </div>
-  <div class="text-center">
-    <a href="{% url 'notice' %}" class="btn btn-primary">View More</a>
-  </div>  
+</div>
+
+<div class="text-center mb-2">
+  <a href="{% url 'notice' %}" class="custom-btn-primary">
+    <i class="fas fa-list"></i> Events
+  </a>
+</div>
+
+</div>
+<div class="content-container">
+  <div class="section-header">
+    <h2>Leaders and Administrators</h2>
+    <p> MEET OUR LEADERSHIP AND ADMINISTRATORS </p>
+  </div>
+<div class="leaders-container" id="leaderContainer">
+    {% for person in official_face %}
+      <div class="leader-card">
+        <img src="{{ person.image.url }}" alt="{{ person.name }}">
+        <div class="leader-info">
+          <h5>{{ person.name }}</h5>
+          <p>{{ person.position }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+   <div class="navigation-icons mb-4">
+    <i class="fa-solid fa-circle-chevron-left" onclick="prevSlide()"></i>
+    <i class="fa-solid fa-circle-chevron-right" onclick="nextSlide()"></i>
+  </div>
 </div>
 
 
@@ -139,9 +163,9 @@
     }
     
     .leader-card img {
-      width: 100%; 
+      width: 80%; 
       height: auto;
-      margin-bottom: 10px;
+      margin-bottom: 3px;
     }
     
     .leader-info h5 {
@@ -179,14 +203,63 @@
     opacity: 1; /* Change opacity on hover */
 }
 
+.card-header {
+  background-color: #2b4864;
+  color: #fff;
+  width: 100%; /* Set the width to 100% to make it fill the container */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Display an ellipsis (...) for text that overflows */
+}
 
+/* Add your custom styles */
+.custom-btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2b4864;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
 
+.custom-btn-primary:hover {
+  background-color: #fff;
+  border: 2px solid #2b4864; /* Add a border to create the circular outline */
+  padding: 10px; /* Adjust the padding for spacing */
+  color: #2b4864; /* Initial color of icons */
+  opacity: 0.9; /* Initial opacity */
 
+}
 
+.about-container {
+  max-width: 666px; /* Adjust the maximum width as needed */
+  margin: auto;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  border-radius: 10px;
+}
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+.explore-btn {
+  text-decoration: none; /* Remove underline */
+  color: #2b4864; /* Set the desired text color */
+  display: flex;
+  align-items: center;
+}
+
+.explore-btn i {
+  margin-right: 5px;
+}
 
     /* Media query for small screens (e.g., screens with a maximum width of 768px) */
-    @media (max-width: 768px) {
+      @media (max-width: 768px) {
       .welcome-container {
         height: 25vh;
       }
@@ -209,6 +282,9 @@
         width: 100%; /* Show a single card for small screens */
         max-width: none;
       }
+      .leader-info {
+        margin-top: 10px;
+      }
     
       .navigation-icons {
         display: flex;
@@ -220,13 +296,31 @@
       padding: 8px; /* Adjust padding for smaller screens */
       font-size: 14px; /* Adjust font size for smaller screens */
   }
-              
-
+  
+  #notice-container .notice-card {
+      width: 100%%; /* Make the cards full-width on small screens */
+      margin-bottom: 10px;
     }
 
+    #notice-container .card-header,
+    #notice-container .card-body {
+      padding: 6px; /* Adjusted padding for smaller screens */
+    }
+
+    #notice-container h1,
+    #notice-container p {
+      font-size: 1rem; /* Adjusted font size for heading and paragraph */
+    }
+
+    #notice-container .btn-primar {
+      padding: 3px;
+      font-size: 1rem; /* Adjusted font size for the button */
+      margin-bottom: 8px;
+      color: #fff;
+    }
+  }
+</style>
       
-    
-  </style>
 
   <script>
     var leaderContainer = document.getElementById('leaderContainer');

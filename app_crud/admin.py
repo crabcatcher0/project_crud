@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(Notice)
 admin.site.register(ContactNumber)
 admin.site.register(FrontPageOffice)
+admin.site.register(Gallery)
