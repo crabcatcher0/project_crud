@@ -57,6 +57,11 @@ def gallery(request):
     }
     return render(request, 'gallery.html', context)
 
+
 def about_us(request):
-    return render(request, 'about_us.html')
+    about_us_data = AboutUs.objects.first()
+    context = {
+        'about_us_data':about_us_data
+    }    
+    return render(request, 'about_us.html', context)
 

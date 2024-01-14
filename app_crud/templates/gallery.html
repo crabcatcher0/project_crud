@@ -1,21 +1,79 @@
 {% extends "nav.html" %}
-
 {% block content %}
 
-<div class="gallery-container mt-5">
-    <h1 class="text-center mb-4">Image Gallery</h1>
-    <div class="row no-gutters">
+<div class="container mt-4 mb-4">
+    <h1 class="image-head mb-4 mt-4">Gallery</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
         {% for image in image_data %}
-            <div class="col-md-4">
-                <div class="card mb-4 custom-card">
-                    <img src="{{ image.image.url }}" class="card-img-top w-100" alt="{{ image.title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ image.title }}</h5>
-                    </div>
+        <div class="col mb-4 image-cont">
+            <div class="card text-center" id="gallery-card">
+                <div class="image-container">
+                    <a href="#" class="thumbnail-link" data-image-url="{{ image.image.url }}">
+                        <img src="{{ image.image.url }}" class="card-img-top img-fluid img-thumbnail rounded mt-3 mb-3" alt="Thumbnail Image">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ image.title }}</h5>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </div>
 </div>
+
+<div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="image-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" class="img-fluid" alt="Full-size Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+#gallery-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.image-container {
+    display: inline-block; 
+}
+
+@media (max-width: 576px) {
+    .col {
+        max-width: 50%; 
+    }
+
+    .row-cols-md-2 {
+        columns: 3;
+    }
+    
+    .card-title {
+        font-size: 1rem; 
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var thumbnailLinks = document.querySelectorAll('.thumbnail-link');
+    var modalImage = document.getElementById('modal-image');
+
+    thumbnailLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            var imageUrl = link.getAttribute('data-image-url');
+            modalImage.setAttribute('src', imageUrl);
+            var modal = new bootstrap.Modal(document.getElementById('image-modal'));
+            modal.show();
+        });
+    });
+});
+</script>
 
 {% endblock %}
