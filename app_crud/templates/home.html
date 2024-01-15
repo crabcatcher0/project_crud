@@ -14,24 +14,21 @@
     </div>
   </div>
 </div>
-
-<div class="about-container">
+<div class="about-container ml-md-4">
   <div class="row">
     <div class="col-sm">
       <h2 class="mb-4" style="font-weight: bold;">About Us</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod euismod massa, id volutpat massa tempus ut.</p>
+      <a href="{% url 'about_us' %}" class="explore-btn mt-4 mb-4" style="font-weight: bold;">
+        <i class="fa-brands fa-wpexplorer fa-2x"></i>
+        Explore
+      </a>
     </div>
     <div class="col-sm">
-      <img src="{% static "fulltjmc.jpg" %}" class="rounded float-right" alt="image">
+      <img src="{% static "fulltjmc.jpg" %}" class="img-fluid rounded float-right" alt="image">
     </div>
   </div>
-  <a href="{% url 'about_us' %}" class="explore-btn mt-4" style="font-weight: bold;">
-    <i class="fa-brands fa-wpexplorer fa-2x"></i>
-    Explore
-  </a>
 </div>
-
-  
 
 <div class="container mt-4 mb-4">
   <h1 style="font-weight: bold;">Latest Events</h1>
@@ -47,6 +44,7 @@
     </div>
     {% endfor %}
   </div>
+  
 </div>
 
 <div class="text-center mb-2">
@@ -233,7 +231,7 @@
 }
 
 .about-container {
-  max-width: 666px; /* Adjust the maximum width as needed */
+  max-width: 666px; 
   margin: auto;
   padding: 30px 20px;
   background-color: #ffffff;
@@ -317,7 +315,14 @@ img {
       margin-bottom: 8px;
       color: #fff;
     }
-  }
+    .about-container{
+      margin-top: 25px;
+    }
+
+    .img-fluid {
+    max-width: 77%;
+    height: auto;
+   }
 </style>
       
 

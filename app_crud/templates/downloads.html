@@ -1,0 +1,32 @@
+{% extends "nav.html" %}
+{% block content %}
+
+
+<div class="container mt-4 mb-4">
+    <div class="card">
+      <div class="card-header  text-white" style="background-color: #2b4864;">
+        <h4>Downloads</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Access essential official documents and information by downloading our comprehensive files. Whether you are exploring or seeking important materials related to various aspects of our institution, these downloads provide valuable insights, guidelines, and resources. Stay informed and prepared for success by accessing the necessary files for your academic and professional journey.</p>
+
+       {% for downloads in downloadable_file_data %}
+        <ul>
+            <li>
+                <a href="{{ downloads.actual_file.url }}">
+                   {{ downloads.file_title }}
+                </a>
+            </li>
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+{% endblock %}

@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'nepali_datetime_field',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

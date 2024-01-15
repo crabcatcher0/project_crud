@@ -61,6 +61,9 @@
     color: white; /* Set heading color to black */
 }
 
+
+
+
 /* Style the moving box container */
 .moving-box {
     background-color: #f0f0f0; /* Set your desired background color */
@@ -76,6 +79,20 @@
     margin-right: 10px; /* Adjust the margin as needed */
     font-size: 18px; /* Adjust the font size as needed */
     color: #000000; /* Set heading color to black */
+}
+
+.moving-box a {
+    text-decoration: none; /* Remove default link underline */
+    color: #2b2bce;
+    display: inline-block; /* Ensure each link is on a new line */
+    margin-right: 20px; /* Adjust spacing between links */
+    white-space: nowrap;
+    animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
+}
+
+.moving-box a:hover {
+    text-decoration: underline; /* Add underline on hover */
+    animation-play-state: paused; /* Pause animation on hover */
 }
 
 .search-form {
@@ -109,12 +126,17 @@
     }
 }
 
-
 /* Style the moving text */
 #movingNotices {
+    animation: moveText 30s linear infinite; /* Adjust duration and timing function */
     white-space: nowrap;
     animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
     color: #000000;
+    overflow: visible; /* Prevent text overflow */
+}
+
+#movingNotices:hover {
+    animation-play-state: paused;
 }
 
 .fotter {
@@ -133,6 +155,16 @@
 }
 
 @media (max-width: 767px) {
+
+    .moving-box a {
+        white-space: normal; /* Allow text to wrap on smaller screens */
+        margin-right: 0; /* Remove right margin on smaller screens */
+
+    }
+    .recent-box,
+    .moving-box {
+        margin-bottom: 10px; /* Adjust the margin between recent-box and moving-box for smaller screens */
+    }
 
     #searchInput {
         font-size: 12px; /* Adjust the font size for smaller screens */
@@ -168,6 +200,25 @@
 
 @media (max-width: 600px) {
     .search-form {
-        display: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
     }
+    .form-control {
+        margin-top: 8px;
+        border-radius: 0;
+    }
+
+    .my-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .my-icons .btn {
+        margin-right: 5px; /* Adjust as needed */
+     }
+    
 }
+
+

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 
 class Notice(models.Model):
@@ -7,6 +7,11 @@ class Notice(models.Model):
     title = models.CharField(max_length = 300, null=False)
     description = models.CharField(max_length = 2000)
     posted_by = models.CharField(max_length = 50, default = 'TJMC')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def formatted_created_at(self):
+        return timezone.localtime(self.created_at).strftime('%Y-%m-%d')
+
 
     def __str__(self):
         return self.title
@@ -65,3 +70,27 @@ class Bachelor(models.Model):
 
     def __str__(self):
         return self.course_title
+    
+
+class MasterProgram(models.Model):
+    course_title = models.CharField(max_length=100, default ='SomeDefaultTitle')
+    course_description = models.CharField(max_length=2000, default='SomeDefaultDescription')
+    affiliation = models.CharField(max_length=100, null=True, default='TU')
+    duration = models.CharField(max_length=300, default='SomeDefaultDuration')
+    eligibility = models.CharField(max_length=300, default='SomeDefaultDuration')
+    career = models.CharField(max_length=1000, default='DefaultCareer')
+    course_summary = models.CharField(max_length=2000, default='DefaultSummary')
+    course_file = models.FileField(upload_to='master_files/', null=True, blank=True)
+
+
+    def __str__(self):
+        return self.course_title
+    
+
+class DownloadableFile(models.Model):
+    file_title = models.CharField(max_length = 500)
+    actual_file = models.FileField(upload_to='downloadable_files/', null=False, blank=False)
+
+    def __str__(self):
+        return self.file_title
+

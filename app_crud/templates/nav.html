@@ -28,10 +28,10 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'about_us' %}">About Us</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'about_us' %}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'gallery' %}">Gallery</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'gallery' %}">Gallery</a>
                     </li>
                     
                    
@@ -42,7 +42,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url '+2' %}">+2</a></li>
                             <li><a class="dropdown-item" href="{% url 'bachelor' %}">Bachelor</a></li>
-                            <li><a class="dropdown-item" href="#">Master</a></li>
+                            <li><a class="dropdown-item" href="{% url 'master' %}">Master</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)">
@@ -50,12 +50,15 @@
                             Faculty
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="{% url 'downloads' %}">Downloads</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'notice' %}">Notice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
                     </li>
 
                 </ul>
@@ -67,15 +70,15 @@
             <div class="recent-box"> 
                 <h4>Recent:</h4>
             </div>
-            <div class="moving-box">
-                <span class="navbar-text" id="movingNotices">Your Moving Text Here</span>
+            <div class="moving-box">  
+                <a href="#" class="navbar-text" id="movingNotices">Your Moving Text Here</a>   
             </div>
             <form class="form-inline my-2 my-lg-0 ml-auto search-form">
                 <div class="row">
                     <div class="col search-input">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     </div>
-                    <div class="col">
+                    <div class="col my-icons">
                         <button class="btn btn-outline-success my-2 my-sm-0 custom-button" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
@@ -88,10 +91,10 @@
                         <a href="#" class="btn my-2 my-sm-0 custom-button phone">
                             <i class="fa-solid fa-phone"></i>
                         </a>
-
                     </div>
                 </div>
             </form>
+            
         </div>
     </nav>
     <div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
@@ -118,24 +121,41 @@
             element.querySelector('.dropdown-toggle').classList.add('show');
             element.querySelector('.dropdown-menu').classList.add('show');
         }
-
+    
         function hideDropdown(element) {
             element.querySelector('.dropdown-toggle').classList.remove('show');
             element.querySelector('.dropdown-menu').classList.remove('show');
         }
-
-        $(document).ready(function() {
+    
+        $(document).ready(function () {
+            // Fetch latest three notice titles
             $.ajax({
-                url: '{% url "get_notice_data" %}',
+                url: '{% url "get_latest_notice_data" %}',  
                 type: 'GET',
                 dataType: 'json',
-                success: function(data) {
-                    $('#movingNotices').text(data.map(item => item.title).join(' || '));
+                success: function (data) {
+                    // Limit the data to the latest three items
+                    var latestNotices = data.slice(0, 3);
+    
+                    $('#movingNotices').text(latestNotices.map(item => item.title).join(' || '));
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log('Error fetching notice data:', error);
                 }
             });
+        });
+    
+        $(document).ready(function() {
+            var movingNotices = $('#movingNotices');
+
+            movingNotices.hover(
+                function() {
+                    movingNotices.addClass('paused');
+                },
+                function() {
+                    movingNotices.removeClass('paused');
+                }
+            );
         });
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -146,6 +166,9 @@
                 phoneModal.show();
             });
         });
+
+        
+
     </script>
 {% block content %}
 
@@ -158,10 +181,10 @@
             <div class="col-md-4 mt-3" style="color: #fff;">
                 <h5>Quick Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about_us' %}">About Us</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-md-4 mt-3" style="color: #fff;">
@@ -176,10 +199,11 @@
             <div class="col-md-4 mt-3" style="color: #fff;">
                 <h5>Contact Us</h5>
                 <ul class="list-unstyled">
-                    <li><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps?q=26.777705,86.681419">Location</a></li>
-                    <li><i class="fas fa-phone"></i> <span>+977 12345678</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps?q=26.777705,86.681419">Find Us</a></li>
+                    {% for phone_number in contact_numbers%}
+                    <li><i class="fas fa-phone"></i> <span>{{ phone_number }}</span></li>
+                    {% endfor %}
                     <li><i class="fa-regular fa-envelope"></i> <span>example@gmail.com</span></li>
-
                 </ul>
             </div>
         </div>

@@ -4,15 +4,15 @@
 <div class="container mt-4 mb-4">
     <div class="card">
       <div class="card-header  text-white" style="background-color: #2b4864;">
-        <h4> Bachelor Programs</h4>
+        <h4> Master Programs</h4>
       </div>
       <div class="card-body">
         <p class="card-text">Embark on a transformative educational journey with our Bachelor's programs, thoughtfully designed to cultivate a strong academic foundation. These programs are crafted to deepen your understanding of your chosen field, fostering critical thinking, innovation, and practical skills. Explore and prepare for a successful future in your desired career path.</p>
-       {% for bachelor in bachelor_data %}
+       {% for master in  master_course_data %}
         <ul>
             <li>
-                <a href="{% url 'bachelor_details' id=bachelor.id %}">
-                   {{ bachelor.course_title }}
+                <a href="{% url 'master_details' id=master.id %}">
+                   {{ master.course_title }}
                 </a>
             </li>
         </ul>
