@@ -58,10 +58,35 @@ def gallery(request):
     return render(request, 'gallery.html', context)
 
 
-def about_us(request):
-    about_us_data = AboutUs.objects.first()
-    context = {
-        'about_us_data':about_us_data
-    }    
-    return render(request, 'about_us.html', context)
+def about_us(request):   
+    return render(request, 'about_us.html')
 
+
+def plus2(request):
+    plus2_data = Plus2.objects.all()
+    
+    context = {
+        'plus2_data':plus2_data
+    }
+    return render(request, '+2.html', context)
+
+
+def plus2_details(request, id):
+    print("Id", id)
+
+    plus2_data_details = get_object_or_404(Plus2, id=id)
+
+
+    context = {
+        'plus2_data_details':plus2_data_details,
+        'id':id
+    }
+    return render(request, '+2_details.html', context)
+
+def bachelor(request):
+    bachelor_data = Bachelor.objects.all()
+
+    context = {
+        'bachelor_data':bachelor_data
+    }
+    return render(request, 'bachelor.html', context)

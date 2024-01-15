@@ -1,0 +1,72 @@
+{% extends "nav.html" %}
+{% block content %}
+
+<div class="container mt-4 mb-4 ">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header text-white" style="background-color:  #2b4864;">
+                    <h4 class="mb-0">{{ plus2_data_details.course_title }}</h4>
+                </div>
+                <div class="card-body plus2-detail-container">
+                    <dl class="row">
+                        <dt class="col-sm-3">Affiliation</dt>
+                        <dd class="col-sm-9">{{ plus2_data_details.affiliation }}</dd>
+                        <dt class="col-sm-3">Duration</dt>
+                        <dd class="col-sm-9">{{ plus2_data_details.duration }}.</dd>
+                        <dt class="col-sm-3">Eligibility</dt>
+                        <dd class="col-sm-9">{{ plus2_data_details.eligibility }}</dd>
+                        <dt class="col-sm-3">Course Description</dt>
+                        <dd class="col-sm-9">{{ plus2_data_details.course_discription }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header text-white" style="background-color: #ebebeb;">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="career-tab" data-toggle="tab" href="#career">Career</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="syllabus-tab" data-toggle="tab" href="#syllabus">Syllabus</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="summary-tab" data-toggle="tab" href="#summary">Course Summary</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body plus2-detail-container">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="career">
+                            {{ plus2_data_details.career }}
+                        </div>
+                        <div class="tab-pane fade" id="syllabus">
+                            {% if plus2_data_details.course_file %}
+                                <a href="{{ plus2_data_details.course_file.url }}" style="text-decoration: none;" target="_blank">
+                                    <i class="fas fa-book"></i> View Syllabus
+                                </a>
+                            {% else %}
+                                <p>No files found</p>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade" id="summary">
+                            {{ plus2_data_details.course_summary }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+{% endblock %}

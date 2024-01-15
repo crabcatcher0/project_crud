@@ -10,4 +10,8 @@ urlpatterns = [
     path('detail_notice/<int:id>/', detail_notice, name='detail_notice'),
     path('gallery', gallery, name='gallery'),
     path('about_us', about_us, name='about_us'),
+    path('+2', plus2, name='+2'),
+    path('plus2_details/<int:id>/', plus2_details, name='plus2_details'),
+    path('bachelor', bachelor, name='bachelor'),
+
 ]

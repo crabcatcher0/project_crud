@@ -38,23 +38,30 @@ class Gallery(models.Model):
         return self.title
 
 
-class AboutUs(models.Model):
-    about_us_description = models.CharField(max_length = 3000, default='This is About Us Section.')
-    image = models.ImageField(upload_to='about_us/', null=True)
+class Plus2(models.Model):
+    course_title = models.CharField(max_length=100, default ='SomeDefaultTitle')
+    course_description = models.CharField(max_length=2000, default='SomeDefaultDescription')
+    affiliation = models.CharField(max_length=100, null=True, default='TU')
+    duration = models.CharField(max_length=300, default='SomeDefaultDuration')
+    eligibility = models.CharField(max_length=300, default='SomeDefaultDuration')
+    career = models.CharField(max_length=1000, default='DefaultCareer')
+    course_summary = models.CharField(max_length=2000, default='DefaultSummary')
+    course_file = models.FileField(upload_to='course_files/', null=True, blank=True)
 
-    def save(self, *args, **kwargs):
-        # Check if an instance already exists
-        if AboutUs.objects.exists() and not self.pk:
-            existing_instance = AboutUs.objects.first()
-            existing_instance.about_us_description = self.about_us_description
-            existing_instance.image = self.image
-            existing_instance.save()
-            return existing_instance
-        else:
-            return super().save(*args, **kwargs)
 
     def __str__(self):
-        return "About Us"
+        return self.course_title
     
-    class Meta:
-        verbose_name_plural = "About Us"
+class Bachelor(models.Model):
+    course_title = models.CharField(max_length=100, default ='SomeDefaultTitle')
+    course_description = models.CharField(max_length=2000, default='SomeDefaultDescription')
+    affiliation = models.CharField(max_length=100, null=True, default='TU')
+    duration = models.CharField(max_length=300, default='SomeDefaultDuration')
+    eligibility = models.CharField(max_length=300, default='SomeDefaultDuration')
+    career = models.CharField(max_length=1000, default='DefaultCareer')
+    course_summary = models.CharField(max_length=2000, default='DefaultSummary')
+    course_file = models.FileField(upload_to='course_files/', null=True, blank=True)
+
+
+    def __str__(self):
+        return self.course_title
