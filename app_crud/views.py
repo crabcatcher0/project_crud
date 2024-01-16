@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
+from django.contrib import messages
+from django.urls import reverse
 from .models import *
-from nepali_datetime import date
 
 # Create your views here.
 
@@ -124,6 +125,26 @@ def master_course(request, id=None):
 
 
 def contact_us(request):
+    if request.method == 'POST':
+        fullName = request.POST.get('fullName')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        message = request.POST.get('message')
+
+        contact_message = ContactUs(
+            fullName=fullName,
+            email=email,
+            phone=phone,
+            address=address,
+            message=message
+        )
+        contact_message.save()
+
+        messages.success(request, 'Your message was sent successfully.')
+
+        return redirect(reverse('contact') + '?success= Your message was sent successfully.')
+    
     return render(request, 'contact.html')
 
 

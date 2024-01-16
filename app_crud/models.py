@@ -3,7 +3,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Notice(models.Model):
-    image = models.ImageField(upload_to='latest_events/', null=False)
+    image = models.ImageField(upload_to='latest_events/', null=True, blank=True)
     title = models.CharField(max_length = 300, null=False)
     description = models.CharField(max_length = 2000)
     posted_by = models.CharField(max_length = 50, default = 'TJMC')
@@ -95,5 +95,12 @@ class DownloadableFile(models.Model):
         return self.file_title
     
 
+class ContactUs(models.Model):
+    fullName = models.CharField(max_length = 30)
+    email = models.EmailField()
+    phone = models.CharField(max_length=10)
+    address = models.CharField(max_length = 30)
+    message = models.CharField(max_length = 300)
 
-
+    def __str__(self):
+        return self.fullName

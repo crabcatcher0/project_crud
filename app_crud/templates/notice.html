@@ -1,26 +1,75 @@
 {% extends "nav.html" %}
 {% block content %}
 
-<div class="container">
-  <div class="row">
-    {% for data in notice_data %}
-      <div class="col-sm-6">
-        <div class="card mb-4 mt-4">
-          <div class="card-body">
-            <h5 class="card-header d-flex align-items-center" style="color: #fff; background-color: #2b4864;">
-              <span class="text-truncate d-inline-block" style="max-width: 100%;">{{ data.title }}</span>
-            </h5>
-            <img src="{{ data.image.url }}" alt="image" class="rounded float-right" width="100" height="100">
-            <p class="card-text">{{ data.description|truncatechars:100 }}</p>
-            <a href="{% url 'detail_notice' id=data.id %}" class="btn btn-primary" style="background-color: #2b4864; border-color: #21334d;">View More</a>
+{% for notice in notice_data %}
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col-md-6">
+        <a href="{% url 'detail_notice' notice.id %}" class="card-link">
+          <div class="card custom-card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-auto">
+                  <p class="fw-bold mb-0" style="color: #344ccb;">{{ notice.formatted_created_at }}:</p>
+                </div>
+                <div class="col-md-auto">
+                  <p class="mb-4 fw-bold">{{ notice.title }}</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-footer text-muted d-flex align-items-center" style="background-color: #e1e1e3;">
-            -{{ data.formatted_created_at }}
-          </div>
-        </div>
+        </a>
       </div>
-    {% endfor %}
+    </div>
   </div>
-</div>
+{% endfor %}
+
+<style>
+
+  .card-link {
+    text-decoration: none; /* Remove underline on link */
+    color: inherit; /* Inherit the color from the parent */
+  }
+
+  .card-link:hover .custom-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add hover effect */
+    transform: scale(1.02); /* Add a slight scale effect on hover */
+  }
+  .custom-card {
+    width: 100vh;
+    margin: 0 1rem; /* Adjust the margin as needed */
+  }
+
+  .notice-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .notice-info p {
+    margin-right: 1rem; /* Adjust the margin between date and title */
+  }
+
+  @media (max-width: 768px) {
+    .custom-card {
+      width: 100%; /* Full width for smaller screens */
+      margin: 0; /* No margin on smaller screens */
+    }
+  }
+</style>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center mt-4">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
 {% endblock %}

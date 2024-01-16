@@ -1,12 +1,17 @@
 {% extends "nav.html" %}
 {% block content %}
+{% load static %}
 
 <div class="container mt-4 mb-4">
     <div class="card text-center" id="custom-card">
         <div class="img-container">
+        {% if detail_notice_data.image %}
         <a href="{{ detail_notice_data.image.url }}" target="_blank"> 
             <img src="{{ detail_notice_data.image.url }}" class="card-img-top img-fluid img-thumbnail rounded mt-3 mb-3" alt="Thumbnail Image" style="max-height: 341px; width: auto;">
         </a>
+        {% else %}
+        <div class="empty"></div>
+        {% endif %}
     </div>
         <div class="card-body">
             <h5 class="card-title" style="background-color: #2b4864; color: #fff; padding: 10px;">{{ detail_notice_data.title }}</h5>
@@ -15,20 +20,20 @@
         </div>
     </div>
 </div>
-
 <style>
-#custom-card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin: 0 auto;
-    max-width: 600px;
-}
+    #custom-card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+    
+    .img-container {
+        display: inline-block; 
+    }
+    
+    
+    </style>
 
-.img-container {
-    display: inline-block; 
-}
-
-
-</style>
 
 {% endblock %}

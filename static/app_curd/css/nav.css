@@ -1,9 +1,9 @@
-/* Custom styles for the first navbar with a dark background */
+
 .navbar-dark {
-    padding: 10px; /* Increase the padding to make the navbar taller */
+    padding: 10px; 
 }
 
-/* Style the TJMC logo */
+
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -16,49 +16,48 @@
     border-radius: 50%;
     border: 2px solid #ffffff;
     padding: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
 }
 
 
 .navbar-form {
-    margin-right: 40px; /* Adjust the margin to move the search bar to the left */
+    margin-right: 40px;
 }
 
 .form-control {
-    border-radius: 0; /* Optional: Remove border-radius for a modern look */
+    border-radius: 0; 
 }
 
 .btn-outline-light {
-    border-radius: 0; /* Optional: Remove border-radius for a modern look */
+    border-radius: 0; 
 }
 
-/* Customize navbar text styles */
 
 .navbar-brand,
 .navbar-nav .nav-link {
-    font-size: 18px; /* Adjust the font size to make text larger */
-    color: #ffffff; /* Set text color to white */
+    font-size: 18px; 
+    color: #ffffff; 
 }
 
 .navbar-toggler {
-    font-size: 24px; /* Adjust the font size of the toggler icon */
-    color: #ffffff; /* Set toggler icon color to white */
+    font-size: 24px; 
+    color: #ffffff; 
 }
 
 
 .recent-box {
-    background-color: #2b4864; /* Set your desired background color */
-    padding: 7px; /* Adjust the padding as needed */
-    display: flex; /* Use flexbox for layout control */
-    align-items: center; /* Center items vertically */
-    margin-right: 10px; /* Add margin to separate from other elements */
+    background-color: #2b4864; 
+    padding: 7px; 
+    display: flex; 
+    align-items: center; 
+    margin-right: 10px; 
 }
 
-/* Customize the Recent: heading style */
+
 .recent-box h4 {
-    margin-right: 10px; /* Adjust the margin as needed */
-    font-size: 18px; /* Adjust the font size as needed */
-    color: white; /* Set heading color to black */
+    margin-right: 10px; 
+    font-size: 18px; 
+    color: white; 
 }
 
 
@@ -66,54 +65,53 @@
 
 /* Style the moving box container */
 .moving-box {
-    background-color: #f0f0f0; /* Set your desired background color */
-    padding: 3px; /* Adjust the padding as needed */
-    display: flex; /* Use flexbox for layout control */
-    align-items: center; /* Center items vertically */
-    overflow: hidden; /* Hide any overflowing content */
-    margin-right: 10px; /* Add margin to separate from navbar items */
+    background-color: #f0f0f0; 
+    padding: 3px; 
+    display: flex; 
+    align-items: center; 
+    overflow: hidden;
+    margin-right: 10px; 
 }
 
-/* Customize the Recent: heading style */
 .moving-box h4 {
-    margin-right: 10px; /* Adjust the margin as needed */
-    font-size: 18px; /* Adjust the font size as needed */
-    color: #000000; /* Set heading color to black */
+    margin-right: 10px; 
+    font-size: 18px; 
+    color: #000000; 
 }
 
 .moving-box a {
-    text-decoration: none; /* Remove default link underline */
+    text-decoration: none; 
     color: #2b2bce;
-    display: inline-block; /* Ensure each link is on a new line */
-    margin-right: 20px; /* Adjust spacing between links */
+    display: inline-block; 
+    margin-right: 20px; 
     white-space: nowrap;
     animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
 }
 
 .moving-box a:hover {
-    text-decoration: underline; /* Add underline on hover */
-    animation-play-state: paused; /* Pause animation on hover */
+    text-decoration: underline; 
+    animation-play-state: paused; 
 }
 
 .search-form {
-    margin-top: 10px; /* Adjust the distance from the top */
+    margin-top: 10px; 
 }
 
 .search-input {
-    margin-right: -9px; /* Adjust the distance between the input and the button */
-    width: 300px; /* Adjust the width of the input field */
+    margin-right: -9px; 
+    width: 300px; 
 }
 
 .custom-button {
-    color: #ffffff; /* Set the color of the button text */
-    background-color: #2b4864; /* Set the background color of the button */
-    border-color: #2b4864; /* Set the border color of the button */
+    color: #ffffff; 
+    background-color: #2b4864; 
+    border-color: #2b4864; 
 }
 
 .custom-button:hover {
-    color: #2b4864; /* Set the color of the button text on hover */
-    background-color: #ffffff; /* Set the background color of the button on hover */
-    border-color: #2b4864; /* Set the border color of the button on hover */
+    color: #2b4864; 
+    background-color: #ffffff; 
+    border-color: #2b4864; 
 }
 
 /* Moving Notices Animation */
@@ -126,13 +124,12 @@
     }
 }
 
-/* Style the moving text */
 #movingNotices {
-    animation: moveText 30s linear infinite; /* Adjust duration and timing function */
+    animation: moveText 30s linear infinite; 
     white-space: nowrap;
     animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
     color: #000000;
-    overflow: visible; /* Prevent text overflow */
+    overflow: visible; 
 }
 
 #movingNotices:hover {
@@ -156,32 +153,35 @@
     color: #ffffff;
 }
 
+
+
+
 @media (max-width: 767px) {
 
     .moving-box a {
-        white-space: normal; /* Allow text to wrap on smaller screens */
-        margin-right: 0; /* Remove right margin on smaller screens */
+        white-space: normal; 
+        margin-right: 0; 
 
     }
     .recent-box,
     .moving-box {
-        margin-bottom: 10px; /* Adjust the margin between recent-box and moving-box for smaller screens */
+        margin-bottom: 10px; 
     }
 
     #searchInput {
-        font-size: 12px; /* Adjust the font size for smaller screens */
-        padding: 5px; /* Adjust padding for smaller screens */
+        font-size: 12px; 
+        padding: 5px; 
     }
 
     #searchButton {
-        font-size: 12px; /* Adjust the font size for smaller screens */
-        padding: 5px 5px; /* Adjust padding for smaller screens */
+        font-size: 12px; 
+        padding: 5px 5px; 
         height: fit-content;
     }
   
 
     #searchButton i {
-        font-size: 0.75rem; /* Adjust the font size for the icon */
+        font-size: 0.75rem; 
     }
     
    
@@ -189,12 +189,12 @@
 /*  larger screens (laptops) */
 @media (min-width: 768px) {
     .navbar-nav {
-        margin-left: auto; /* Move the nav-items to the left */
+        margin-left: auto; 
     }
         
     
     .moving-box {
-        margin-right: auto; /* Align the moving box to the left on larger screens */
+        margin-right: auto; 
         width: 40%;
     }
       
@@ -218,7 +218,7 @@
         align-items: center;
     }
     .my-icons .btn {
-        margin-right: 5px; /* Adjust as needed */
+        margin-right: 5px; 
      }
     
 }

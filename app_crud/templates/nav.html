@@ -13,9 +13,10 @@
     <title>TJMC</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark"  style="background-color: #2b4864;">
+    <!-- First Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2b4864; ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'tjmclogo.png' %}" alt="Logo" height="30" class="d-inline-block align-text-top">
                 TJMC
             </a>
@@ -65,13 +66,14 @@
             </div>
         </div>
     </nav>
+    <!-- Second Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <div class="recent-box"> 
                 <h4>Recent:</h4>
             </div>
             <div class="moving-box">  
-                <a href="{% url 'notice' %}" class="navbar-text" id="movingNotices">Your Moving Text Here</a>   
+                <a href="{% url 'notice' %}" class="navbar-text" id="movingNotices"></a>   
             </div>
             <form class="form-inline my-2 my-lg-0 ml-auto search-form">
                 <div class="row">
@@ -97,6 +99,7 @@
             
         </div>
     </nav>
+    <!-- Modal For phone number -->
     <div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -175,7 +178,7 @@
 
 {% endblock %}
 
-<footer class="footer mt-3" style="background-color: #2b4864;">
+<footer class="footer mt-5" style="background-color: #2b4864;">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mt-3" style="color: #fff;">
@@ -190,10 +193,10 @@
             <div class="col-md-4 mt-3" style="color: #fff;">
                 <h5>Additional Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Career</a></li>
+                    <li><a href="#">Staff</a></li>
+                    <li><a href="{% url 'bachelor' %}">Undergraduate</a></li>
+                    <li><a href="{% url 'master' %}">Graduate</a></li>
                 </ul>
             </div>
             <div class="col-md-4 mt-3" style="color: #fff;">
