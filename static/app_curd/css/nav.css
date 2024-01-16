@@ -137,6 +137,8 @@
 
 #movingNotices:hover {
     animation-play-state: paused;
+    color: red;
+    text-decoration: none;
 }
 
 .fotter {
