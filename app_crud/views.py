@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.contrib import messages
 from django.urls import reverse
+from django.core.paginator import Paginator
 from .models import *
 
 # Create your views here.
@@ -24,10 +25,15 @@ def myclass(request):
 
 def notice(request):
     notice_data = Notice.objects.all().order_by('-created_at')
+    paginated_data = Paginator(notice_data, 6)
+
+    page_number = request.GET.get("page")
+    page_data = paginated_data.get_page(page_number)
 
 
     context = {
-        'notice_data' : notice_data
+        # 'notice_data' : notice_data,
+        'page_data':page_data
     }
 
     return render(request, 'notice.html', context)
@@ -58,8 +64,14 @@ def detail_notice(request, id):
 
 def gallery(request):
     image_data = Gallery.objects.all()
+    paginated_image = Paginator(image_data, 6)
+
+    page_number = request.GET.get("page")
+    page_data = paginated_image.get_page(page_number)
+
     context = {
-        'image_data': image_data
+        # 'image_data': image_data
+        'page_data':page_data
     }
     return render(request, 'gallery.html', context)
 

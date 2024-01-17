@@ -20,6 +20,8 @@
                 <img src="{% static 'tjmclogo.png' %}" alt="Logo" height="30" class="d-inline-block align-text-top">
                 TJMC
             </a>
+            <span class="email" style="margin-left: 10px; color: #d3d1d1;"><i class="fa fa-envelope" style="margin-right: 3px;" aria-hidden="true"></i>trijugacampus@gmail.com</span>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -84,7 +86,7 @@
                         <button class="btn btn-outline-success my-2 my-sm-0 custom-button" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
-                        <a href="#" class="btn my-2 my-sm-0 custom-button">
+                        <a href="https://www.facebook.com/triyugajanata.multiplecampus" class="btn my-2 my-sm-0 custom-button">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
                         <a href="#" class="btn my-2 my-sm-0 custom-button">
@@ -114,6 +116,19 @@
                         {% endfor %}
                     </ul>
                 </div>
+            </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="phoneModalLabel">Admission Numbers</h5>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for admission_number in admission_numbers %}
+                            <li>{{ admission_number }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
             </div>
         </div>
     </div>

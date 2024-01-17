@@ -18,10 +18,17 @@ class Notice(models.Model):
 
 
 class ContactNumber(models.Model):
-    phone_number = models.CharField(max_length=20, null=True)
+    phone_number = models.CharField(max_length=20, default='TJMC')
 
     def __str__(self):
         return self.phone_number
+    
+
+class AdmissionNumber(models.Model):
+    admission_number = models.CharField(max_length=20, default='TJMC')
+
+    def __str__(self):
+        return self.admission_number
     
     
 
@@ -37,7 +44,7 @@ class FrontPageOffice(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to='college_picture/', null=False, blank=False, default='noimg.jpg')
-    title = models.CharField(max_length = 200, null=True, blank = True)
+    title = models.CharField(max_length = 200, null=True, blank = True, default='TJMC')
 
     def __str__(self):
         return self.title
