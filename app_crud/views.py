@@ -39,10 +39,6 @@ def notice(request):
     return render(request, 'notice.html', context)
 
 
-def get_notice_data(request):
-    moving_data = list(Notice.objects.values('title')) 
-
-    return JsonResponse(moving_data, safe=False)
 
 
 def get_latest_notice(request):

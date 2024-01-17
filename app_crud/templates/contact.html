@@ -14,7 +14,7 @@
         <div class="alert alert-success" role="alert">
           We welcome the opportunity to assist you. Please don't hesitate to reach out to us with any inquiries or concerns. Your satisfaction is our priority, and we look forward to providing you with the support you need.
         </div>
-        <form action="#" method="POST">
+        <form action="{% url 'contact' %}" method="POST">
           {% csrf_token %}
           <div class="mb-3">
             <label for="fullName" class="form-label">Full Name</label>

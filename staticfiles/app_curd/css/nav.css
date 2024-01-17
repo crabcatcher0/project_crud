@@ -1,22 +1,226 @@
-  /* Custom styles for the first navbar with a dark background */
-  .navbar-dark {
-    background-color: #343a40;
-    padding: 20px; /* Adjust the padding to make the navbar taller */
+
+.navbar-dark {
+    padding: 10px; 
 }
 
-/* Customize navbar text styles */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+
+.navbar-form {
+    margin-right: 40px;
+}
+
+.form-control {
+    border-radius: 0; 
+}
+
+.btn-outline-light {
+    border-radius: 0; 
+}
+
+
 .navbar-brand,
 .navbar-nav .nav-link {
-    font-size: 18px; /* Adjust the font size to make text larger */
+    font-size: 18px; 
+    color: #ffffff; 
 }
 
 .navbar-toggler {
-    font-size: 24px; /* Adjust the font size of the toggler icon */
+    font-size: 24px; 
+    color: #ffffff; 
 }
 
-/* Move nav-items to the left on larger screens (laptops) */
-@media (min-width: 768px) {
-    .navbar-nav {
-        margin-left: auto; /* Move the nav-items to the left */
+
+.recent-box {
+    background-color: #2b4864; 
+    padding: 7px; 
+    display: flex; 
+    align-items: center; 
+    margin-right: 10px; 
+}
+
+
+.recent-box h4 {
+    margin-right: 10px; 
+    font-size: 18px; 
+    color: white; 
+}
+
+
+
+
+/* Style the moving box container */
+.moving-box {
+    background-color: #f0f0f0; 
+    padding: 3px; 
+    display: flex; 
+    align-items: center; 
+    overflow: hidden;
+    margin-right: 10px; 
+}
+
+.moving-box h4 {
+    margin-right: 10px; 
+    font-size: 18px; 
+    color: #000000; 
+}
+
+.moving-box a {
+    text-decoration: none; 
+    color: #2b2bce;
+    display: inline-block; 
+    margin-right: 20px; 
+    white-space: nowrap;
+    animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
+}
+
+.moving-box a:hover {
+    text-decoration: underline; 
+    animation-play-state: paused; 
+}
+
+.search-form {
+    margin-top: 10px; 
+}
+
+.search-input {
+    margin-right: -9px; 
+    width: 300px; 
+}
+
+.custom-button {
+    color: #ffffff; 
+    background-color: #2b4864; 
+    border-color: #2b4864; 
+}
+
+.custom-button:hover {
+    color: #2b4864; 
+    background-color: #ffffff; 
+    border-color: #2b4864; 
+}
+
+/* Moving Notices Animation */
+@keyframes moveText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
     }
 }
+
+#movingNotices {
+    animation: moveText 30s linear infinite; 
+    white-space: nowrap;
+    animation: moveText 17s cubic-bezier(0.17, 0.40, 0.83, 0.67) infinite;
+    color: #000000;
+    overflow: visible; 
+}
+
+#movingNotices:hover {
+    animation-play-state: paused;
+    color: red;
+    text-decoration: none;
+}
+
+.fotter {
+    margin-top: auto;
+
+}
+
+
+.list-unstyled li a {
+    text-decoration: none;
+    color: #e3dede;
+}
+
+.list-unstyled li a:hover{
+    color: #ffffff;
+}
+
+
+
+
+@media (max-width: 767px) {
+
+    .moving-box a {
+        white-space: normal; 
+        margin-right: 0; 
+
+    }
+    .recent-box,
+    .moving-box {
+        margin-bottom: 10px; 
+    }
+
+    #searchInput {
+        font-size: 12px; 
+        padding: 5px; 
+    }
+
+    #searchButton {
+        font-size: 12px; 
+        padding: 5px 5px; 
+        height: fit-content;
+    }
+  
+
+    #searchButton i {
+        font-size: 0.75rem; 
+    }
+    
+   
+}
+/*  larger screens (laptops) */
+@media (min-width: 768px) {
+    .navbar-nav {
+        margin-left: auto; 
+    }
+        
+    
+    .moving-box {
+        margin-right: auto; 
+        width: 40%;
+    }
+      
+}
+
+@media (max-width: 600px) {
+    .search-form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+    }
+    .form-control {
+        margin-top: 8px;
+        border-radius: 0;
+    }
+
+    .my-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .my-icons .btn {
+        margin-right: 5px; 
+     }
+    
+}
+
+

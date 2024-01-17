@@ -8,6 +8,11 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'app_curd/css/nav.css' %}">
+    <script>
+        var getLatestNoticeDataUrl = "{% url 'get_latest_notice_data' %}";
+    </script>
+    <script src="{% static 'app_curd/js/nav.js' %}"></script>
+
 
 
     <title>TJMC</title>
@@ -20,9 +25,8 @@
                 <img src="{% static 'tjmclogo.png' %}" alt="Logo" height="30" class="d-inline-block align-text-top">
                 TJMC
             </a>
-            <span class="email" style="margin-left: 10px; color: #d3d1d1;"><i class="fa fa-envelope" style="margin-right: 3px;" aria-hidden="true"></i>trijugacampus@gmail.com</span>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="email" style="margin-left: 10px; color: #e9e9e9;"><i class="fa-regular fa-envelope" style="margin-right: 5px;"></i>trijugacampus@gmail.com</span>
+            <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -134,60 +138,7 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script>
-        function showDropdown(element) {
-            element.querySelector('.dropdown-toggle').classList.add('show');
-            element.querySelector('.dropdown-menu').classList.add('show');
-        }
     
-        function hideDropdown(element) {
-            element.querySelector('.dropdown-toggle').classList.remove('show');
-            element.querySelector('.dropdown-menu').classList.remove('show');
-        }
-    
-        $(document).ready(function () {
-            // Fetch latest three notice titles
-            $.ajax({
-                url: '{% url "get_latest_notice_data" %}',  
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    // Limit the data to the latest three items
-                    var latestNotices = data.slice(0, 3);
-    
-                    $('#movingNotices').text(latestNotices.map(item => item.title).join(' || '));
-                },
-                error: function (error) {
-                    console.log('Error fetching notice data:', error);
-                }
-            });
-        });
-    
-        $(document).ready(function() {
-            var movingNotices = $('#movingNotices');
-
-            movingNotices.hover(
-                function() {
-                    movingNotices.addClass('paused');
-                },
-                function() {
-                    movingNotices.removeClass('paused');
-                }
-            );
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var phoneButton = document.querySelector('.phone');
-    
-            phoneButton.addEventListener('click', function () {
-                var phoneModal = new bootstrap.Modal(document.getElementById('phoneModal'));
-                phoneModal.show();
-            });
-        });
-
-        
-
-    </script>
 {% block content %}
 
 
@@ -221,7 +172,7 @@
                     {% for phone_number in contact_numbers%}
                     <li><i class="fas fa-phone"></i> <span>{{ phone_number }}</span></li>
                     {% endfor %}
-                    <li><i class="fa-regular fa-envelope"></i> <span>example@gmail.com</span></li>
+                    <li><i class="fa-regular fa-envelope"></i> <span>trijugacampus@gmail.com</span></li>
                 </ul>
             </div>
         </div>
