@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Sidebar -->
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky">
+          <!-- Sidebar Heading -->
+          <div class="sidebar-heading border-bottom py-4 text-center">
+            <h2 class="h3">TJMC</h2>
+          </div>
+
+          <!-- Sidebar Navigation -->
+          <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admission_number' %}">
+                    <i class="bi bi-house-door-fill me-2"></i>
+                    Admission Numbers
+                </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="bi bi-file-earmark-text-fill me-2"></i>
+                Contact Numbers
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="bi bi-gear-fill me-2"></i>
+                Settings
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Dashboard</h1>
+        </div>
+
+        <!-- Your dashboard content goes here -->
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Card Title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  
+{% endblock %}

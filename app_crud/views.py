@@ -40,7 +40,6 @@ def notice(request):
 
 
 
-
 def get_latest_notice(request):
     latest_notices = Notice.objects.order_by('-created_at')[:3].values('title')
 

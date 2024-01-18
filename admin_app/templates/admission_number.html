@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<ul>
+    {% for number in data %}
+        <li>{{ number.admission_number }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
