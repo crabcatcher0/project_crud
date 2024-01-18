@@ -1,41 +1,80 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
     <title>TJMC | Administration Site</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" style="font-weight: bold;" href="#">Welcome, Admin.</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome, Admin.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">View Site</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Change Password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  <div class="container-fluid">
+    <div class="row">
+      {% block breadcrum %}
+      <div class="container">
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mt-3">
+                    <li class="breadcrumb-item"><a href="{% url 'admin_dashboard' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ current_page }}</li>
+                </ol>
+            </nav>
+      {% endblock %}
+      {% block sidenav %}
+      <!-- Sidebar -->
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky">
+          <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="#">View Site</a>
+              <a class="nav-link" href="{% url 'admission_number' %}">
+                <i class="bi bi-house-door-fill me-2"></i>
+                Admission Numbers
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Change Password</a>
+              <a class="nav-link" href="{% url 'contact_numbers' %}">
+                <i class="bi bi-file-earmark-text-fill me-2"></i>
+                Contact Numbers
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
+              <a class="nav-link" href="#">
+                <i class="bi bi-gear-fill me-2"></i>
+                Settings
+              </a>
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
-    
+      </nav>
+      {% endblock %}
    {% block content %}
 
    {% endblock %}
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+    </div>
+  </div>
+  
+    <script src="https://kit.fontawesome.com/e558d90e8d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 </html>

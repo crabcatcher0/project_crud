@@ -3,43 +3,9 @@
 {% block content %}
   <div class="container-fluid">
     <div class="row">
-
-      <!-- Sidebar -->
-      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-        <div class="position-sticky">
-          <!-- Sidebar Heading -->
-          <div class="sidebar-heading border-bottom py-4 text-center">
-            <h2 class="h3">TJMC</h2>
-          </div>
-
-          <!-- Sidebar Navigation -->
-          <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'admission_number' %}">
-                    <i class="bi bi-house-door-fill me-2"></i>
-                    Admission Numbers
-                </a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="bi bi-file-earmark-text-fill me-2"></i>
-                Contact Numbers
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="bi bi-gear-fill me-2"></i>
-                Settings
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
       <!-- Main content -->
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="d-flex justify-content-between align-items-center mb-3">
           <h1 class="h2">Dashboard</h1>
         </div>
 
@@ -53,10 +19,9 @@
               </div>
             </div>
           </div>
+          <!-- Add more cards or content as needed -->
         </div>
       </main>
     </div>
   </div>
-
-  
 {% endblock %}
