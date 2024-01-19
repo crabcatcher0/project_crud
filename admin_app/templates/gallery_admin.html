@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-6 ms-0 mt-4">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ message.tags }}</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <div>
+            Please check the fields twice before commiting to any changes!!
+        </div>
+    </div>
+
+
+<div class="container mt-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="image-head mb-4 mt-4">Gallery</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fas fa-plus"></i> Add
+        </button>
+    </div>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        {% for image in page_data %}
+        <div class="col mb-4 image-cont">
+            <div class="card text-center" id="gallery-card">
+                <div class="image-container">
+                    <a href="#" class="thumbnail-link" data-image-url="{{ image.image.url }}" data-image-title="{{ image.title }}">
+                        <img src="{{ image.image.url }}" class="card-img-top img-fluid img-thumbnail rounded mt-3 mb-3" alt="Thumbnail Image">
+                    </a>
+                </div>
+                 <div class="card-body">
+                    <span class="ms-auto">
+                        <a href="{% url 'confirm_delete_image' image.id %}" class="text-decoration-none">
+                           <i class="fas fa-trash"></i>Delete
+                        </a>       
+                   </span>
+                    
+                </div> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="image-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" class="img-fluid" alt="Full-size Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Pagination pages -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-4">
+      {% if page_data.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1" tabindex="-1">First</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_data.previous_page_number }}">Previous</a>
+        </li>
+      {% endif %}
+  
+      {% for num in page_data.paginator.page_range %}
+        {% if page_data.number == num %}
+          <li class="page-item active"><span class="page-link">{{ num }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+      {% endfor %}
+  
+      {% if page_data.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_data.next_page_number }}">Next</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_data.paginator.num_pages }}">Last</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav> 
+</div>
+
+
+<!-- For Adding Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="#" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Add Image</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+#gallery-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.image-container {
+    display: inline-block; 
+}
+
+@media (max-width: 576px) {
+    .col {
+        max-width: 50%; 
+    }
+
+    .row-cols-md-2 {
+        columns: 3;
+    }
+    
+    .card-title {
+        font-size: 1rem; 
+    }
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var thumbnailLinks = document.querySelectorAll('.thumbnail-link');
+        var modalImage = document.getElementById('modal-image');
+        var modalTitle = document.getElementById('modal-title');
+    
+        thumbnailLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var imageUrl = link.getAttribute('data-image-url');
+                var imageTitle = link.getAttribute('data-image-title');
+    
+                modalImage.setAttribute('src', imageUrl);
+                modalTitle.textContent = imageTitle;
+    
+                var modal = new bootstrap.Modal(document.getElementById('image-modal'));
+                modal.show();
+            });
+        });
+    });
+    </script>
+    
+
+{% endblock %}

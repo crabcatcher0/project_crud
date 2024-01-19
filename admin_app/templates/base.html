@@ -42,7 +42,7 @@
       {% endblock %}
       {% block sidenav %}
       <!-- Sidebar -->
-      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar mb-4">
         <div class="position-sticky">
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -58,9 +58,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{% url 'notice_admin' %}">
                 <i class="bi bi-gear-fill me-2"></i>
-                Settings
+                Notices
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'gallery_admin' %}">
+                <i class="bi bi-gear-fill me-2"></i>
+                Gallery
               </a>
             </li>
           </ul>

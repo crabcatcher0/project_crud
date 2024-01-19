@@ -12,3 +12,15 @@ class ContactNumberForm(forms.ModelForm):
     class Meta:
         model = ContactNumber
         fields = ['phone_number']
+
+
+class NoticeForm(forms.ModelForm):
+    class Meta:
+        model = Notice
+        fields = ['image', 'title', 'description', 'posted_by']
+
+
+class GalleryForm(forms.ModelForm):
+    class Meta:
+        model = Gallery
+        fields = ['image', 'title']

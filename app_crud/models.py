@@ -3,7 +3,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Notice(models.Model):
-    image = models.ImageField(upload_to='latest_events/', null=True, blank=True)
+    image = models.ImageField(upload_to='latest_events/', blank=True)
     title = models.CharField(max_length = 300, null=False)
     description = models.CharField(max_length = 2000)
     posted_by = models.CharField(max_length = 50, default = 'TJMC')
@@ -43,8 +43,9 @@ class FrontPageOffice(models.Model):
 
 
 class Gallery(models.Model):
-    image = models.ImageField(upload_to='college_picture/', null=False, blank=False, default='noimg.jpg')
+    image = models.ImageField(upload_to='college_picture/', null=False, blank=False)
     title = models.CharField(max_length = 200, null=True, blank = True, default='TJMC')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

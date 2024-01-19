@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <div>
+                    This Action Cannot Be Undone.
+                </div>
+            </div>
+            <h2 class="text-center">Confirmation Page</h2>
+            <p class="text-center">Are you sure you want to delete "{{ notice_data.title }}"?</p>
+            <form method="post" action="{% url 'delete_notice' notice_data.id %}">
+                {% csrf_token %}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                    <a href="{% url 'notice_admin' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -58,7 +58,7 @@ def detail_notice(request, id):
 
 
 def gallery(request):
-    image_data = Gallery.objects.all()
+    image_data = Gallery.objects.all().order_by('-created_at')
     paginated_image = Paginator(image_data, 6)
 
     page_number = request.GET.get("page")
