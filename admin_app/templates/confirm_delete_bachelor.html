@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
         <div class="col-md-6">
             <div class="alert alert-danger d-flex align-items-center" role="alert">
                 <div>
@@ -8,14 +7,14 @@
                 </div>
             </div>
             <h2 class="text-center">Confirmation Page</h2>
-            <p class="text-center">Are you sure you want to delete "{{ leaders_data.name }}"?</p>
-            <form method="post" action="{% url 'delete_leaders' leaders_data.id %}">
+            <p class="text-center">Are you sure you want to delete "{{ bachelor_data.course_title }}"?</p>
+            <form method="post" action="{% url 'delete_bachelor' bachelor_data.id %}">
                 {% csrf_token %}
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button type="submit" class="btn btn-danger">Confirm Delete</button>
-                    <a href="{% url 'leaders_admin' %}" class="btn btn-secondary">Cancel</a>
+                    <a href="{% url 'bachelor_admin' %}" class="btn btn-secondary">Cancel</a>
                 </div>
             </form>
         </div>
-    
+
 {% endblock %}

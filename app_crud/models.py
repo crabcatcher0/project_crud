@@ -96,7 +96,7 @@ class MasterProgram(models.Model):
     
 
 class DownloadableFile(models.Model):
-    file_title = models.CharField(max_length = 500)
+    file_title = models.CharField(max_length = 500, blank=False, null = False)
     actual_file = models.FileField(upload_to='downloadable_files/', null=False, blank=False)
 
     def __str__(self):

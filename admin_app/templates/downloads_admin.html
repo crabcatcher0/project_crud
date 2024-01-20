@@ -21,21 +21,22 @@
       </div>
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="card-title mb-0">Contact Numbers</h5>
+            <h5 class="card-title mb-0">Downloadable Files</h5>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="fas fa-plus"></i> Add
               </button>
         </div>
         <div class="card-body">
             <ul class="list-group">
-                {% for number in phone_data %}
+                {% for file in downloads_data %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ number.phone_number }}
+                        {{ file.file_title|truncatechars:65 }}
+
                         <span>
-                            <a href="#" class="text-decoration-none me-2">
+                            <a href="#" class="text-decoration-none">
                                 <i class="fas fa-edit"></i>
                             </a>                 
-                            <a href="{% url 'confirmation_page_contact' number.id %}" class="text-decoration-none">
+                            <a href="{% url 'confirm_delete_downloads' file.id %}" class="text-decoration-none">
                                 <i class="fas fa-trash"></i>
                               </a>                                      
                         </span> 
@@ -47,19 +48,20 @@
 </div>
 </div>
 </div>
+
 <!-- For Adding Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">Add Admission Number</h5>
+  <h5 class="modal-title" id="exampleModalLabel">Add New File</h5>
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-    <form method="post" action="{% url 'contact_numbers' %}">
+    <form method="POST" action="{% url 'downloads_admin' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Add Number</button>
+        <button type="submit" class="btn btn-primary">Add File</button>
     </form>
 </div>
 </div>
