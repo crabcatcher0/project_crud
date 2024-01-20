@@ -24,3 +24,9 @@ class GalleryForm(forms.ModelForm):
     class Meta:
         model = Gallery
         fields = ['image', 'title']
+
+
+class LeaderForm(forms.ModelForm):
+    class Meta:
+        model = FrontPageOffice
+        fields = ['name', 'position', 'image']

@@ -209,3 +209,44 @@ def confirm_delete_image(request, id):
     }
 
     return render (request, 'confirm_delete_image.html', context)
+
+#leaders
+def leaders_admmin(request):
+    leader_data = FrontPageOffice.objects.all()
+    paginated_data = Paginator(leader_data, 6)
+    
+    page_number = request.GET.get("page")
+    page_data = paginated_data.get_page(page_number)
+
+    form = LeaderForm()
+
+    if request.method == 'POST':
+        form = LeaderForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'New Image Added Successfully.')
+            return redirect ('leaders_admin')
+    context = {
+        'page_data':page_data,
+        'form':form,
+        'current_page':'Leaders And Administration'
+    }
+
+    return render(request, 'leaders_admin.html', context)
+
+#delete leaders
+def delete_leaders(request, id):
+    leader_data = get_object_or_404(FrontPageOffice, id=id)
+    leader_data.delete()
+    messages.success(request, 'Image deleted successfully')
+    return redirect('leaders_admin')
+
+
+#confirm
+def confirm_delete_leaders(request, id):
+    leaders_data = get_object_or_404(FrontPageOffice, id=id)
+    context = {
+        'leaders_data':leaders_data
+    }
+    return render(request, 'confirm_delete_leaders.html', context)

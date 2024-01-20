@@ -18,6 +18,11 @@ urlpatterns = [
     path('gallery_admin/', gallery_admin, name='gallery_admin'),
     path('delete_gallery/<int:id>/', delete_gallery, name='delete_gallery'),
     path('confirm_delete_image/<int:id>/', confirm_delete_image, name='confirm_delete_image'),
+    path('leaders_admin', leaders_admmin, name='leaders_admin'),
+    path('delete_leaders/<int:id>/', delete_leaders, name='delete_leaders'),
+    path('confirm_delete_leaders/<int:id>/', confirm_delete_leaders, name='confirm_delete_leaders'),
+
+
 
 
 
